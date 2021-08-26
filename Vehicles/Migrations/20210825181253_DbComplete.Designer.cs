@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Vehicles.Data;
 
 namespace Vehicles.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20210825181253_DbComplete")]
+    partial class DbComplete
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -198,7 +200,7 @@ namespace Vehicles.Migrations
 
                     b.HasIndex("ProcedureId");
 
-                    b.ToTable("Details");
+                    b.ToTable("Detail");
                 });
 
             modelBuilder.Entity("Vehicles.Data.Entities.DocumentType", b =>
@@ -249,7 +251,7 @@ namespace Vehicles.Migrations
 
                     b.HasIndex("VehicleId");
 
-                    b.ToTable("Histories");
+                    b.ToTable("History");
                 });
 
             modelBuilder.Entity("Vehicles.Data.Entities.Procedure", b =>
@@ -412,14 +414,11 @@ namespace Vehicles.Migrations
 
                     b.HasIndex("BrandId");
 
-                    b.HasIndex("Plaque")
-                        .IsUnique();
-
                     b.HasIndex("UserId");
 
                     b.HasIndex("VehicleTypeId");
 
-                    b.ToTable("Vehicles");
+                    b.ToTable("Vehicle");
                 });
 
             modelBuilder.Entity("Vehicles.Data.Entities.VehiclePhoto", b =>
@@ -429,8 +428,8 @@ namespace Vehicles.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("ImageId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("VehicleId")
                         .HasColumnType("int");
@@ -439,7 +438,7 @@ namespace Vehicles.Migrations
 
                     b.HasIndex("VehicleId");
 
-                    b.ToTable("VehiclePhotos");
+                    b.ToTable("VehiclePhoto");
                 });
 
             modelBuilder.Entity("Vehicles.Data.Entities.VehicleType", b =>

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Vehicles.Data.Entities
 {
@@ -15,6 +12,7 @@ namespace Vehicles.Data.Entities
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string Description { get; set; }
 
+        public ICollection<Vehicle> Vehicles { get; set; }
 
     }
 }
