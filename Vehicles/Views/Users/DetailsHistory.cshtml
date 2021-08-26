@@ -64,9 +64,9 @@
     </div>
 </div>
 <div>
-    <a asp-action="AddDetail" asp-route-id="@Model.Id" class="btn btn-primary">Adicionar Procedimiento</a>
-    <a asp-action="EditHistory" asp-route-id="@Model.Id" class="btn btn-warning">Editar Historia</a>
-    <a asp-action="DetailsVehicle" asp-route-id="@Model.Vehicle.Id" class="btn btn-success">Regresar</a>
+    <a asp-action="AddDetail" asp-route-id="@Model.Id" class="btn btn-primary"><i class=" fas fa-procedures"></i></a>
+    <a asp-action="EditHistory" asp-route-id="@Model.Id" class="btn btn-warning"><i class=" fas fa-edit"></i></a>
+    <a asp-action="DetailsVehicle" asp-route-id="@Model.Vehicle.Id" class="btn btn-success"><i class=" fas fa-undo-alt"></i></a>
 </div>
 <br />
 
@@ -118,8 +118,8 @@
                                     @Html.DisplayFor(modelItem => item.TotalPrice)
                                 </td>
                                 <td>
-                                    <a asp-action="EditDetail" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
-                                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog">Borrar</button>
+                                    <a asp-action="EditDetail" asp-route-id="@item.Id" class="btn btn-warning"><i class=" fas fa-pencil-alt"></i></a>
+                                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class=" fas fa-trash-alt"></i></button>
                                 </td>
                             </tr>
                         }

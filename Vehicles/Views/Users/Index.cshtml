@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
 <p>
-    <a asp-action="Create" class="btn btn-primary">Nuevo</a>
+    <a asp-action="Create" class="btn btn-primary"><i class=" fas fa-user-plus"></i></a>
 </p>
 <div class="row">
     <div class="col-md-12">
@@ -22,9 +22,7 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.FullName)
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.DocumentType.Description)
-                            </th>
+                           
                             <th>
                                 @Html.DisplayNameFor(model => model.Document)
                             </th>
@@ -50,9 +48,7 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.FullName)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DocumentType.Description)
-                                </td>
+                               
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Document)
                                 </td>
@@ -69,9 +65,9 @@
                                     <img src="@item.ImageFullPath" style="width: 100px; height: 100px; border-radius: 150px;" />
                                 </td>
                                 <td>
-                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
-                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Vehiculos</a>
-                                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog">Borrar</button>
+                                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning"><i class=" fas fa-user-edit"></i></a>
+                                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info"><i class=" fas fa-car-alt"></i></a>
+                                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class=" fas fa-trash-alt"></i></button>
                                 </td>
                             </tr>
                         }

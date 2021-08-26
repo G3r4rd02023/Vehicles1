@@ -19,9 +19,11 @@
             <partial name="_Vehicle" />
 
             <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
-                <a asp-action="AddVehicleImage" asp-route-id="@Model.Id" class="btn btn-info">Agregar Foto</a>
-                <a asp-action="Details" asp-route-id="@Model.UserId" class="btn btn-success">Regresar</a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                </button>
+                <a asp-action="AddVehicleImage" asp-route-id="@Model.Id" class="btn btn-info"><i class=" fas fa-camera"></i></a>
+                <a asp-action="Details" asp-route-id="@Model.UserId" class="btn btn-success"><i class=" fas fa-undo-alt"></i></a>
             </div>
         </form>
     </div>
@@ -51,7 +53,7 @@
                                     <img src="@item.ImageFullPath" style="width:200px;height:200px;max-width: 100%; height: auto;" />
                                 </td>
                                 <td>
-                                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog">Borrar</button>
+                                    <button data-id="@item.Id" class="btn btn-danger deleteItem" data-toggle="modal" data-target="#deleteDialog"><i class=" fas fa-trash-alt"></i></button>
                                 </td>
                             </tr>
                         }

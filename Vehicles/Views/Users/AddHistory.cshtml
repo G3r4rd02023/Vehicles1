@@ -18,8 +18,10 @@
             <partial name="_History" />
 
             <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
-                <a asp-action="DetailsVehicle" asp-route-id="@Model.VehicleId" class="btn btn-success">Regresar</a>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save"></i>
+                </button>
+                <a asp-action="DetailsVehicle" asp-route-id="@Model.VehicleId" class="btn btn-success"><i class=" fas fa-undo-alt"></i></a>
             </div>
         </form>
     </div>
