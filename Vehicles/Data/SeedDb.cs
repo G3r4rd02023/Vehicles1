@@ -26,8 +26,8 @@ namespace Vehicles.Data
             await CheckProceduresAsync();
             await CheckRolesAsycn();
             await CheckUserAsync("0801-1990-14267", "Gerardo", "Lanza", "gerardo@yopmail.com", "311 322 4620", "Calle Luna Calle Sol", UserType.Admin);
-            await CheckUserAsync("0801-1987-78912", "Adam", "Samdler", "adam@yopmail.com", "311 322 4620", "Calle Luna Calle Sol", UserType.User);
-            await CheckUserAsync("0801-1997-00189", "Marcela", "Ponce", "marcela@yopmail.com", "311 322 4620", "Calle Luna Calle Sol", UserType.User);
+            await CheckUserAsync("0801-1987-78912", "Jocelyn", "Deniset", "jocelyn@yopmail.com", "311 322 4620", "Calle Luna Calle Sol", UserType.User);
+            await CheckUserAsync("0801-1997-00189", "Walter", "Santos", "walter@yopmail.com", "311 322 4620", "Calle Luna Calle Sol", UserType.User);
             await CheckUserAsync("0801-1990-71908", "Angel", "Hernandez", "angel@yopmail.com", "311 322 4620", "Calle Luna Calle Sol", UserType.Admin);
         }
 
