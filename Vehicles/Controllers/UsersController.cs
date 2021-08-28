@@ -13,7 +13,7 @@ using Vehicles.Models;
 
 namespace Vehicles.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    
     public class UsersController : Controller
     {
         private readonly DataContext _context;
@@ -35,11 +35,27 @@ namespace Vehicles.Controllers
 
         public async Task<IActionResult> Index()
         {
+            var user = await _userHelper.GetUserAsync(User.Identity.Name);
+            
+            if (user == null)
+            {
+                return null;
+            }
+
+            if (await _userHelper.IsUserInRoleAsync(user, "Admin"))
+            {
+                return View(await _context.Users
+                    .Include(x => x.DocumentType)
+                    .Include(x => x.Vehicles)                   
+                    .ToListAsync());
+            }
+
             return View(await _context.Users
-                .Include(x => x.DocumentType)
-                .Include(x => x.Vehicles)
-                .Where(x => x.UserType == UserType.User)
-                .ToListAsync());
+                    .Include(x => x.DocumentType)
+                    .Include(x => x.Vehicles)
+                    .Where(x => x.UserName == User.Identity.Name)
+                    .ToListAsync());
+
         }
 
         public IActionResult Create()
@@ -438,7 +454,7 @@ namespace Vehicles.Controllers
 
             return View(vehicle);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddHistory(int? id)
         {
             if (id == null)
@@ -459,7 +475,7 @@ namespace Vehicles.Controllers
 
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddHistory(HistoryViewModel model)
@@ -496,7 +512,7 @@ namespace Vehicles.Controllers
 
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditHistory(int? id)
         {
             if (id == null)
@@ -521,7 +537,7 @@ namespace Vehicles.Controllers
 
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditHistory(int id, HistoryViewModel historyViewModel)
@@ -538,7 +554,7 @@ namespace Vehicles.Controllers
 
             return View(historyViewModel);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteHistory(int? id)
         {
             if (id == null)
@@ -580,7 +596,7 @@ namespace Vehicles.Controllers
 
             return View(history);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddDetail(int? id)
         {
             if (id == null)
@@ -602,7 +618,7 @@ namespace Vehicles.Controllers
 
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddDetail(DetailViewModel detailViewModel)
@@ -633,7 +649,7 @@ namespace Vehicles.Controllers
             detailViewModel.Procedures = _combosHelper.GetComboProcedures();
             return View(detailViewModel);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> EditDetail(int? id)
         {
             if (id == null)
@@ -653,7 +669,7 @@ namespace Vehicles.Controllers
             DetailViewModel model = _converterHelper.ToDetailViewModel(detail);
             return View(model);
         }
-
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditDetail(int id, DetailViewModel detailViewModel)
@@ -669,7 +685,7 @@ namespace Vehicles.Controllers
             detailViewModel.Procedures = _combosHelper.GetComboProcedures();
             return View(detailViewModel);
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteDetail(int? id)
         {
             if (id == null)

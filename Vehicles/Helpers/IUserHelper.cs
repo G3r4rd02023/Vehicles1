@@ -43,5 +43,7 @@ namespace Vehicles.Helpers
 
         Task<SignInResult> ValidatePasswordAsync(User user, string password);
 
+        
+
     }
 }
