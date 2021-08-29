@@ -37,7 +37,8 @@ namespace Vehicles.Data.Entities
         [Display(Name = "Foto")]
         public string ImageFullPath => string.IsNullOrEmpty(ImageUrl)
             ? $"https://localhost:44378/images/noimage.png"
-            : $"https://localhost:44378{ImageUrl[1..]}";
+            //: $"https://localhost:44378{ImageUrl[1..]}";
+            : $"https://workshopvehicles.azurewebsites.net{ImageUrl.Substring(1)}";
 
         [Display(Name = "Tipo de usuario")]
         public UserType UserType { get; set; }

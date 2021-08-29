@@ -4,10 +4,15 @@
     ViewData["Title"] = "Login";
 }
 
-<h2>Inicio de Sesión</h2>
+
 
 <div class="row">
-    <div class="col-md-6">
+    <div class=" col-md-4">
+
+    </div>
+    <div class="col-md-4">
+        <h4>Inicio de Sesión</h4>
+        <hr />
         <form method="post">
             <div asp-validation-summary="ModelOnly"></div>
 
@@ -39,6 +44,9 @@
                 <a asp-action="RecoverPassword" class="btn btn-link">¿Olvidaste tu contraseña?</a>
             </div>
         </form>
+    </div>
+    <div class=" col-md-4">
+
     </div>
 </div>
 
